@@ -2,6 +2,7 @@
 #include <iostream>
 #include <math.h>
 #include <random>
+int BLOCK_SIZE = 256;
 
 __global__
 void multiply(int n, float *x, float *y, float *z) {
@@ -25,7 +26,8 @@ int main() {
         y[i] = (float)(random() % N) / (float) N;
     }
 
-    multiply<<<1, 1>>>(N, x, y, z);
+    int numBlocks = (N + BLOCK_SIZE - 1) / BLOCK_SIZE;
+    multiply<<<numBlocks, BLOCK_SIZE>>>(N, x, y, z);
     cudaDeviceSynchronize();
 
     float maxError = 0.0f;
