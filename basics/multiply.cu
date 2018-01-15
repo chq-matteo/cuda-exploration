@@ -2,7 +2,7 @@
 #include <iostream>
 #include <math.h>
 #include <random>
-
+using namespace std;
 __global__
 void multiply(int n, float *x, float *y, float *z) {
     int index = blockIdx.x * blockDim.x +  threadIdx.x;
