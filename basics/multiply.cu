@@ -2,7 +2,7 @@
 #include <iostream>
 #include <math.h>
 #include <random>
-using namespace std;
+
 __global__
 void multiply(int n, float *x, float *y, float *z) {
     int index = blockIdx.x * blockDim.x +  threadIdx.x;
@@ -32,7 +32,7 @@ int main() {
     for (int i = 0; i < N; i++) {
         maxError = fmax(maxError, fabs(z[i] - (x[i] * y[i])));
     }
-    cout << "Max error " << maxError << endl;
+    std::cout << "Max error " << maxError << std::endl;
     cudaFree(x);
     cudaFree(y);
     cudaFree(z);
