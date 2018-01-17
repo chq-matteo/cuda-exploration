@@ -24,5 +24,5 @@ def dot(A, B):
 if __name__ == '__main__':
     N = 10 ** 6
     A = numpy.ones(N, dtype=numpy.float32)
-    B = numpy.ones(N - 1, dtype=numpy.float32)
+    B = numpy.ones(N, dtype=numpy.float32)
     print('Expected {} got {}'.format(N, dot(A, B)))
